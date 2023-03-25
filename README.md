@@ -9,7 +9,7 @@ This language will use korean alphabet.
 | FUNCTION | 함수 |
 | "" | 「」 |
 
-
+The double quotation marks will be replaced by fullwidth quotes (「...」).
 
 ## EBNF:
 
