@@ -22,9 +22,9 @@ ASSIGNMENT ::= IDENTIFIER '=' EXPRESSION;
 
 PRINT ::= '출력하다' '(' EXPRESSION ')';
 
-IF ::= '만약~이라면' EXPRESSION ':' STATEMENT ['아니면' ':' SUITE];
+IF ::= '만약~이라면' '(' EXPRESSION ')' '{' STATEMENT ['아니면' '{' SUITE '}'] '}';
 
-FUNCTION_DEFINITION ::= '함수' IDENTIFIER '(' [PARAMS] ')' ':' SUITE;
+FUNCTION_DEFINITION ::= '함수' IDENTIFIER '(' [PARAMS] ')' '{' SUITE '}';
 
 PARAMS ::= IDENTIFIER {',' IDENTIFIER};
 
