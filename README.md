@@ -7,6 +7,8 @@ This language will use korean alphabet.
 | IF | 만약~이라면 |
 | ELSE | 아니면 |
 | FUNCTION | 함수 |
+| "" | 「」 |
+
 
 
 ## EBNF:
@@ -28,9 +30,9 @@ PARAMS ::= IDENTIFIER {',' IDENTIFIER};
 
 FUNCTION_CALL ::= IDENTIFIER '(' [ARGS] ')';
 
-ARGS ::= EXPRESSION {',' EXPRESSION};
+ARGS ::= EXPRESSION {' |' EXPRESSION};
 
-SUITE ::= STATEMENT | '{' {STATEMENT} '}'
+SUITE ::= STATEMENT | '{' {STATEMENT} '}';
 
 EXPRESSION ::= TERM { ( '+' | '-' ) TERM };
 
@@ -42,6 +44,10 @@ IDENTIFIER ::= LETTER {LETTER | DIGIT | '_'};
 
 NUMBER ::= DIGIT {DIGIT} ['.' DIGIT {DIGIT}];
 
+DIGIT ::= "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9";
 
+LETTER ::= [가-힣];
+
+STRING ::= '「' {LETTER | DIGIT | ' ' | '!' | '"' | '#' | '$' | '%' | '&' | '\'' | '(' | ')' | '*' | '+' | ',' | '-' | '.' | '/' | ':' | ';' | '<' | '=' | '>' | '?' | '@' | '[' | '\' | ']' | '^' | '_' | '`' | '{' | '|' | '}' | '~'} '」';
 
 ```
