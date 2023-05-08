@@ -6,8 +6,11 @@ This language will use korean alphabet.
 | PRINT | 출력하다 |
 | IF | 만약~이라면 |
 | ELSE | 아니면 |
+| WHILE | 동안에 |
 | FUNCTION | 함수 |
 | "" | 「」 |
+| AND | 그리고 |
+| OR | 그리고 |
 
 The double quotation marks will be replaced by fullwidth quotes (「...」).
 
@@ -23,6 +26,8 @@ ASSIGNMENT ::= IDENTIFIER '=' EXPRESSION;
 PRINT ::= '출력하다' '(' EXPRESSION ')';
 
 IF ::= '만약~이라면' '(' EXPRESSION ')' '{' STATEMENT ['아니면' '{' SUITE '}'] '}';
+
+WHILE ::= '동안에' '(' EXPRESSION ')' '{' SUITE '}';
 
 FUNCTION_DEFINITION ::= '함수' IDENTIFIER '(' [PARAMS] ')' '{' SUITE '}';
 
@@ -49,5 +54,9 @@ DIGIT ::= "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9";
 LETTER ::= [가-힣];
 
 STRING ::= '「' {LETTER | DIGIT | ' ' | '!' | '"' | '#' | '$' | '%' | '&' | '\'' | '(' | ')' | '*' | '+' | ',' | '-' | '.' | '/' | ':' | ';' | '<' | '=' | '>' | '?' | '@' | '[' | '\' | ']' | '^' | '_' | '`' | '{' | '|' | '}' | '~'} '」';
+
+AND ::= '그리고';
+
+OR ::= '또는';
 
 ```
