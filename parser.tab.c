@@ -1331,4 +1331,7 @@ yyreturnlab:
 #line 73 "parser.y"
 
 
-int yyparse();
+int main(){
+  yyparse();
+  return 0;
+}

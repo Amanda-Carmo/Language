@@ -72,4 +72,7 @@ print: PRINT LPAREN relexpression RPAREN;
 
 %%
 
-int yyparse();
+int main(){
+  yyparse();
+  return 0;
+}
