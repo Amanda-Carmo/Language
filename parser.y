@@ -1,6 +1,5 @@
 %{
-    #include<stdio.h>
-    NBlock *programBlock; /* Raiz da árvore */    
+    #include<stdio.h> 
     
     extern int yylex();
     void yyerror(const char *s) { printf("ERROR: %s\n", s); } 
@@ -73,4 +72,4 @@ print: PRINT LPAREN relexpression RPAREN;
 
 %%
 
-yyparse();
+int yyparse();
