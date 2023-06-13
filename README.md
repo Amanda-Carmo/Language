@@ -15,39 +15,42 @@ This language is based on Julia language, but some reserved words use korean alp
 | OR | 그리고 |
 
 
-
-The double quotation marks will be replaced by fullwidth quotes (「...」).
-
 ## EBNF:
 
 ```
-PROGRAM ::= {STATEMENT};
+PROGRAM ::= BLOCK
 
-STATEMENT ::= ASSIGNMENT | PRINT | IF | FUNCTION_CALL | FUNCTION_DEFINITION;
+BLOCK ::= STATEMENT '\n' | BLOCK STATEMENT
 
-ASSIGNMENT ::= IDENTIFIER '=' EXPRESSION;
+STATEMENT ::= ASSIGNMENT | DECLARATION | FUNCTION_CALL| RETURN | PRINT | IF | WHILE | FUNCTION_DEFINITION | 
 
-PRINT ::= '출력하다' '(' EXPRESSION ')';
+DECLARATION ::= IDENTIFIER '::' TYPE;
 
-IF ::= '만약~이라면' '(' EXPRESSION ')' '{' STATEMENT ['아니면' '{' SUITE '}'] '}';
+ASSIGNMENT ::= IDENTIFIER '=' RELEXPRESSION;
 
-WHILE ::= '동안에' '(' EXPRESSION ')' '{' SUITE '}';
+PRINT ::= '출력하다' '(' RELEXPRESSION ')';
 
-FUNCTION_DEFINITION ::= '함수' IDENTIFIER '(' [PARAMS] ')' '{' SUITE '}';
+IF ::= '만약' RELEXPRESSION '\n' BLOCK '끝' | '만약' RELexpression '\n' BLOCK '아니면' BLOCK '끝';
 
-PARAMS ::= IDENTIFIER {',' IDENTIFIER};
+WHILE ::= '동안에' RELEXPRESSION '\n' BLOCK '끝';
+
+FUNCTION_DEFINITION ::= '함수' IDENTIFIER '(' [PARAMS] ')' '\n' BLOCK '끝'; | '함수' IDENTIFIER '(' [PARAMS] ')' '\n' BLOCK '반환' RELEXPRESSION '끝';
+
+PARAMS ::= IDENTIFIER ',' PARAMS | IDENTIFIER | ε;
 
 FUNCTION_CALL ::= IDENTIFIER '(' [ARGS] ')';
 
-ARGS ::= EXPRESSION {' |' EXPRESSION};
+ARGS ::= RELEXPRESSION ',' ARGS | RELEXPRESSION | ε;
 
-SUITE ::= STATEMENT | '{' {STATEMENT} '}';
+RELEXPRESSION ::= EXPRESSION { ( '==' | '>' | '<' ) EXPRESSION };
 
-EXPRESSION ::= TERM { ( '+' | '-' ) TERM };
+EXPRESSION ::= TERM {( '+' | '-' | '그리고' | '.' ) TERM};
 
-TERM :== FACTOR {( '*' | '/' | '//' | '%' ) FACTOR};
+TERM :== FACTOR {( '*' | '/' | '또는' ) FACTOR};
 
-FACTOR :== IDENTIFIER | NUMBER | STRING | FUNCTION_CALL | FUNCTION_DEFINITION | '(' EXPRESSION ')' | '-' FACTOR | '+' FACTOR;
+FACTOR :== INT | STRING | IDENTIFIER | FUNCTION_CALL |  '(' EXPRESSION ')' | '-' FACTOR | '+' FACTOR | '!' FACTOR | 읽기 '(' ')';
+
+FUNCTION_CALL ::= IDENTIFIER '(' [ARGS] ')';
 
 IDENTIFIER ::= LETTER {LETTER | DIGIT | '_'};
 
@@ -55,13 +58,9 @@ NUMBER ::= DIGIT {DIGIT} ['.' DIGIT {DIGIT}];
 
 DIGIT ::= "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9";
 
-LETTER ::= [가-힣];
+LETTER ::= [가-힣a-zA-Z_][_가-힣a-zA-Z_0-9]*;
 
 STRING ::= '「' {LETTER | DIGIT | ' ' | '!' | '"' | '#' | '$' | '%' | '&' | '\'' | '(' | ')' | '*' | '+' | ',' | '-' | '.' | '/' | ':' | ';' | '<' | '=' | '>' | '?' | '@' | '[' | '\' | ']' | '^' | '_' | '`' | '{' | '|' | '}' | '~'} '」';
-
-AND ::= '그리고';
-
-OR ::= '또는';
 
 ```
 
