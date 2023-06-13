@@ -16,8 +16,8 @@ def filter(code):
     return code
 
 if __name__ == "__main__":
-    if sys.argv[1].rsplit('.', 1)[-1] != 'hangul':
-        print('File must be a .hangul file')
+    if sys.argv[1].rsplit('.', 1)[-1] != '한글':
+        print('File must be a .한글 file')
         sys.exit(1)
 
     with open(sys.argv[1], 'r', encoding="utf8") as f:

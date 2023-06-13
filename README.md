@@ -100,6 +100,7 @@ A = 2
 - Next, `만약` (`if`) was added to the previous example. If true, the code will print "`B는 4입니다.`", if false, "`B는 4가 아닙니다`" will be printed. The output after running the code is:
     ``` text
 
+    8
     B는 4가 아닙니다.
     4
     B는 4입니다.
