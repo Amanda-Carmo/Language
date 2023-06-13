@@ -13,6 +13,8 @@ This language is based on Julia language, but some reserved words use korean alp
 | END | 끝 |
 | AND | 그리고 |
 | OR | 그리고 |
+| Int| 정수
+| Str | 문자열
 
 
 ## EBNF:
